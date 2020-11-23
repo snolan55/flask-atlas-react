@@ -19,9 +19,9 @@ class Location(db.Document):
 
 
 class Order(db.Document):
-    orderedBy = ReferenceField(User)
-    acceptedBy = ReferenceField(User)
-    products = ListField(ReferenceField(Product))
-    deliveryLocation = ReferenceField(Location)
-    productLocation = ReferenceField(Location)
-    timeOfOrder= DateTimeField()
+    orderedBy = db.ReferenceField(User)
+    acceptedBy = db.ReferenceField(User)
+    products = db.ListField(ReferenceField(Product))
+    deliveryLocation = db.ReferenceField(Location)
+    productLocation = db.ReferenceField(Location)
+    timeOfOrder= db.DateTimeField()
