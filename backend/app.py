@@ -1,13 +1,16 @@
+import os
 from flask import Flask, g
-from flask_mongoengine import MongoEngine
-from instance.config import *
-
-db = MongoEngine()
+from extensions import db
+from routes import routes_bp
 
 def create_app(test_config=None):
     #create and configure the app
     
     app = Flask(__name__, instance_relative_config=True)
+    app.config.from_mapping(
+        FLASK_ENV ='development',
+        DEBUG = True
+    )
     
     if test_config is None:
         # load the instance config, if it exists, when not testing
@@ -28,3 +31,4 @@ def create_app(test_config=None):
         app.register_blueprint(routes_bp)
 
         return app
+
