@@ -1,16 +1,16 @@
 from mongoengine import *
-from extensions import db
+from .extensions import db
 
 class User(db.Document):
-    userId = db.StringField(unique=True, required=True)
-    employeeType = db.StringField()
+    name = db.StringField(unique=True, required=True)
+    role = db.StringField()
     
 
 class Product(db.Document):
+    img = db.StringField()
     tags = db.ListField(StringField())
-    productName = db.StringField()
-    productInventory = db.IntField()
-    productNumber = db.IntField(required=True)
+    name = db.StringField()
+    number = db.StringField(unique=True, required=True)
 
 class Location(db.Document):
     siteName = db.StringField()
